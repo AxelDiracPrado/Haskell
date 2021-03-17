@@ -38,9 +38,36 @@
 	* sum:  toma una lista de números y devuelve su suma.
 	* product: toma una lista de números y devuelve su producto.  
 	* elem:  toma un valor de tipo comparable y una lista de tipos comparables y nos  
- 	  indica si dicho valor es miembro de la lista.  
-	* 
+ 	  indica si dicho valor es miembro de la lista.     
+    * replicate: tomoa un elemento y un entero, regresa una lista con el elemento repetido  
+      tantas veces como indica el entero.  
 13.- Un función prefija foo puede ponerse infija si se encierra entre "`foo`", por ejemplo:  
      "a `foo` b = foo a b".  
-14.- Los rangos se usan para crear listas con una secuencia aritmética de elementos enumerables.
+14.- Los rangos se usan para crear listas con una secuencia aritmética de elementos enumerables.  
+     Por ejemplo: los números del 1 al 20: "[1..20]".    
+15.- Se pueden especificar el número de pasos entre elementos de un rango, por ejemplo:   
+     números pares menores o iguale a 20 "[2,4..20]".  
+16.- Algunas funciones para crear listas infinitas:    
+    * cycle: toma una lista y crea un ciclo de listas iguales infinito.    
+    * repeat: toma un elemento y produce una lista infinita con solo ese elemento.    
+17.- Listas intencionales o por comprensión son las listas que se crean con una expresión de   
+     salida, un predicado que indica de donde tomar los argumentos de la función de salida    
+     y una condición que expresa que elementos compondrán la lista, por ejemplo:  
+     "[x*2 | x <- [1..10], x*2 >= 12]".  
+18.- Las tuplas son estructuras similares a las listas, la diferencia radica en que las listas  
+     son homogéneas pero las tuplas pueden almacenar componentes de diferente tipo. Las tuplas  
+     se denotan con paréntesis y sus elementos se separan por comas.  
+19.- Podemos meter tuplas a una lista siempre y cuando todas las tuplas sean de la misma  
+     dimensión y sean igualemnte heterogéneas.   
+20.- Si m /= n, enotnces una n-tupla es de diferente tipo que una  m-tupla.  
+21.- Si dos tuplas no alamcenan los mismos tipos en el mismo orden, entonces no son del mismo tipo.  
+22.- Dos tuplas pueden ser comparadas si sus elementos pueden ser comparados. Dos tuplas de   
+     diferente tamaño no pueden ser comparadas.
+23.- Algunas funciones sobre tuplas:
+    * fst: toma una tupla y devuelve su primer elemento.    
+    * snd: toma una tupla y devuelve su segunda componente.    
+        (Nota: Estas dos funciones funcionan solo con duplas).
+    * zip: recibe dos listas y forma una lista de duplas con los elementos de cada dupla.  
+      Ejemplo: "zip [1,2,3] ["uno","dos","tres"] = [(1,"uno"),(2,"dos"),(3,"tres")]"  
+    * 
 

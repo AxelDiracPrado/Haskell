@@ -1,5 +1,7 @@
 # Algunas notas sobre Haskell.  
-  
+
+## Algo de listas, tuplas y operadores en Haskell.
+    
 1.- El operadon "/=" representa la relación de diferente.  
 2.- Los argumentos de una función no van entre paréntesis como en otros lenguajes.  
 3.- Para cargar un script foo.hs, escribimos ":l foo.hs" dentro de ghci, con esto  
@@ -69,5 +71,7 @@
         (Nota: Estas dos funciones funcionan solo con duplas).
     * zip: recibe dos listas y forma una lista de duplas con los elementos de cada dupla.  
       Ejemplo: "zip [1,2,3] ["uno","dos","tres"] = [(1,"uno"),(2,"dos"),(3,"tres")]"  
-    * 
+
+## Algo sobre tipos.
+1.- Haskell  
 

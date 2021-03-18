@@ -129,4 +129,45 @@
 	* Floating: define el comportamiento de los tipos que se pueden comportar como números  
 	  en coma flotante.  
 
-
+## Sintaxis de las funciones.  
+1.- En la definición de las funciones, se puede separar el cuerpo de la función en varías partes  
+    dependiendo del o de los argumentos. Para ello escribimos en diferentes lineas el   
+    el comportamiento de la función cuando recibe ciertos argumentos. Este proceso de dividir el  
+    cuerpo de una función permite ahorrar el uso de if-else y forma parte de lo que se conoce como  
+    ajuste de patrones.  
+2.- El ajuste de patrones se refiere a cuando se tiene una función con diferentes cuerpos evaluando 
+    diferentes patrones de argumentos. Cuando se manda  a llamar la función con ciertos argumentos,
+    se evalúa el cuerpo que se ajuste al patrón de los argumentos.  
+3.- Es conveniente escribir primero los cuerpos de la función con los patrones de argumentos   
+    más específicos y dejar al final los más generales.    
+4.- Cuando utilizamos patrones siempre tenemos que incluir uno general para asegurarnos que   
+    nuestro programa no fallará.    
+	Nota: Variables ligadas por ":" en un argumento, deben ser rodeadas por paréntesis.    
+		la función "error" recibe una cadena y genera un error en tiempo de ejecución.    
+5.- as pattern es un patrón que etiqueta un argumento dividido como un todo. Se usa "@" para usarlo.  
+    por ejemplo xs@x:y:ys indica que xs hace referencia a la lista x:y:ys como un todo.  
+6.- Guardas son una forma de comprobar si una propiedad de un valor o varios de ellos cumplen   
+    es verdadera o flasa. Es similar a usar if's repetidas veces con la conveniencia de que los  
+    guardas son más legibles. Se usan barras verticales "|" seguido de una expresión que ha de cumplir  
+    o no el argumento. Los guardas van con sangría y alineados.    
+7.- Regularmente los guardas terminan con "otherwise" que acepta todo.   
+8.- "where" es una palabra reservada que sirve para asignar identificadores a algunas expresiones    
+    dentro de las funciones. Se coloca al final de las funciones y liga variables a expresiones.  
+    todas las asignaciones deben ir bien alineadas:     
+     where bmi = weight / height ^ 2
+           skinny = 18.5
+           normal = 25.0
+           fat = 30.0    
+9.- "let-in" permite ligar variables en cualquier lugar de las funciones, son muy locales en el sentido  
+     de que no son tranbsferibles entre guardas. La sintaxis es "let <definición de las variables> in <expresión>".  
+     Las variables definidas en let <definición> son accesibles en in <expresión>.   
+10.- where hace definiciones sintáctica por lo que no define expresiones. let-in si define expresiones por lo que   
+     como tal, puede ser usada como expresión.  
+11.- La expresión case-of es similar a usar diferentes cuerpos de una función, su sintaxis es: 
+     case expresion of patron -> resultado
+                       patron -> resultado
+                       patron -> resultado
+                       ...    
+12.- se puede usar let dentro de una lista intensional como si fuera un predicado, solo que no filtra los  
+     elementos, únicamente liga variables.  
+13.- case es igual una expresión y puede ser usado como argumento de alguna otra operación.

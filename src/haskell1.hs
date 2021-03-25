@@ -78,3 +78,61 @@ cabeza' :: [a] -> a
 cabeza' xs = case xs of 
                 [] -> error "sin cabeza" 
                 (x:_) -> x
+
+fibonacci :: (Integral a) => a -> a
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci (n-1) + fibonacci (n-2)
+
+maxList :: (Ord a) => [a] -> a
+maxList [] = error "No hay máximo de una lista vacía"
+maxList ([x]) = x
+maxList (x:xs) 
+    | x > maxTail = x
+    | otherwise   = maxTail
+    where maxTail = maxList xs
+
+
+replicar :: (Num i, Ord i) => i -> a -> [a]
+replicar n x
+    | n <= 0    = []
+    | otherwise = x:replicar (n - 1) x  
+
+tomar :: (Num i, Ord i) => i -> [a] -> [a]
+tomar n _
+    | n <= 0   = []
+tomar _ []     = []
+tomar n (x:xs) = x: tomar (n-1) xs
+
+reversa :: [a] -> [a]
+reversa [] = []
+reversa (x:xs) =  reversa xs ++ [x]
+
+zip2 :: [a] -> [b] -> [(a,b)]
+zip2 [] _ = []
+zip2 _ [] = []
+zip2 (x:xs) (y:ys) = (x,y):zip xs ys
+
+elemento :: (Eq a) => a -> [a] -> Bool
+elemento a [] = False
+elemento a (x:xs)
+    | a == x    = True
+    | otherwise = elemento a xs 
+
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) = 
+    let smallerSorted = quickSort [a | a <- xs, a <= x]
+        biggerSorted  = quickSort [a | a <- xs, a > x]
+    in  smallerSorted ++ [x] ++ biggerSorted
+
+{-Funciones de orden superior-}
+
+zipFunc :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipFunc _ [] _ = []
+zipFunc _ _ [] = []
+zipFunc f (x:xs) (y:ys) = (f x y):(zipFunc f xs ys)
+
+flips :: (a -> b -> c) -> (b -> a -> c)
+flips f = g
+    where g x y = f y x

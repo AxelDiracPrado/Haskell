@@ -171,3 +171,18 @@
 12.- se puede usar let dentro de una lista intensional como si fuera un predicado, solo que no filtra los  
      elementos, únicamente liga variables.  
 13.- case es igual una expresión y puede ser usado como argumento de alguna otra operación.
+
+## Funciones de orden superior.
+1.- Un función en haskell puede recibir como parámetros funciones y/o devolver una función.  
+    Una función de orden superior es aquella que que que recibe como parámetros funciones y/o  
+    devuelve una función.  
+2.- En haskell, las funciones solo pueden tomar un parámetro, las funciones que se definen con más de un  
+    parámetro son funciones currificadas.  
+3.- Una ejemplo de función currificada es "max :: (Ord a) => a -> a -> a". Lo que en realidad hace max es  
+    tomar un valor del tipo a y regresa que toma algo de a y regresa algo de a. Por ejemplo:  " max 3 4"  
+    en realidad se ve como (max 3) 4, donde max 3 en realidad es una función que toma como valor el 4.  
+    "a -> a -> a" puede verse como "a -> (a -> a)".  
+4.- Cuandose llama a funciones con menos parámetros de los necesarios, lo que se hace es definir funciones al vuelo.  
+5.- Para definir una función como parámetro, su tipo debe ser rodeado por paréntesis, por ejemplo:  
+    foo :: (a -> a) -> a, esto toma una función qua toma algo y regresa algo del mismo tipo y regresa algo del mismo tipo.   
+

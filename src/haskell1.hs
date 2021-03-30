@@ -126,6 +126,12 @@ quickSort (x:xs) =
         biggerSorted  = quickSort [a | a <- xs, a > x]
     in  smallerSorted ++ [x] ++ biggerSorted
 
+quickSort2 :: (Ord a) => [a] -> [a]
+quickSort2 [] = []
+quickSort2 (x:xs) =
+    let smallerSorted = quickSort2 (filter (<= x) xs)
+        biggerSorted  = quickSort2 (filter (>x) xs)
+    in smallerSorted ++ [x] ++ biggerSorted
 {-Funciones de orden superior-}
 
 zipFunc :: (a -> b -> c) -> [a] -> [b] -> [c]
@@ -136,3 +142,58 @@ zipFunc f (x:xs) (y:ys) = (f x y):(zipFunc f xs ys)
 flips :: (a -> b -> c) -> (b -> a -> c)
 flips f = g
     where g x y = f y x
+
+flips2 :: (a -> b -> c) -> (b -> a -> c)
+flips2 f = \x y -> f y x
+
+map2 :: (a -> b) -> [a] -> [b]
+map2 _ [] = []
+map2 f (x:xs) = (f x):(map2 f xs)
+
+filter2 :: (a -> Bool) -> [a] -> [a]
+filter2 _ [] = []
+filter2 p (x:xs) 
+    | p x       = x:filter2 p xs 
+    | otherwise = filter2 p xs
+
+largesDivisible :: (Integral a) => a
+largesDivisible = head (filter p [100000,99999..])
+    where p x = mod x 3829 == 0 
+
+chainCollatz :: (Integral a) => a -> [a]
+chainCollatz 1 = [1]
+chainCollatz n
+    | even n = n:chainCollatz (div n 2)
+    | odd n  = n:chainCollatz (3*n + 1)
+
+{-Uso de lambdas-}
+numLongChains :: Int
+numLongChains = length (filter (\xs -> length xs > 15) (map chainCollatz [1..100]))
+
+{-Acumuladores y pliegues-}
+suma2 :: (Num a) => [a] -> a
+suma2 xs = foldl (\acc x -> acc + x) 0 xs
+
+elemento2 :: (Eq a) => a -> [a] -> Bool 
+elemento2 y ys = foldl (\acc x -> if x == y then True else acc) False ys
+
+map3 :: (a -> b) -> [a] -> [b]
+map3 f xs = foldr (\x acc -> f x : acc) [] xs
+
+maximo2 :: (Ord a) => [a] ->a
+maximo2 = foldr1 (\x acc -> if x>acc then x else acc) 
+
+reversa2 :: [a] -> [a]
+reversa2 = foldl (\acc x -> x:acc) []
+
+producto2 :: (Num a) => [a] -> a
+producto2 = foldr1 (*)
+
+filtro2 :: (a -> Bool) -> [a] -> [a]
+filtro2 p = foldr (\x acc -> if p x then x:acc else acc) []
+
+cabeza2 :: [a] -> a
+cabeza2 = foldr1 (\x _ -> x)
+
+last3 :: [a] -> a
+last3 = foldl1 (\_ x -> x)

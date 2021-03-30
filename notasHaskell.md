@@ -185,4 +185,31 @@
 4.- Cuandose llama a funciones con menos parámetros de los necesarios, lo que se hace es definir funciones al vuelo.  
 5.- Para definir una función como parámetro, su tipo debe ser rodeado por paréntesis, por ejemplo:  
     foo :: (a -> a) -> a, esto toma una función qua toma algo y regresa algo del mismo tipo y regresa algo del mismo tipo.   
-
+6.- Las funciones infijas pueden igualmente ser aplicadas parcialmente para usar la propiedad de currificación.  
+    Para aplicar parcialmente una fucnión infija, rodeamos la función con paréntesis y colocamos algún argumento  
+    en alguno de sus lados, esto se conoce como seccionar: por ejemplo, "*" se secciona como "(2*)" o "(*7)".  
+7.- Las funciones no tienen el comportamiento definido por la clase de tipos Show por lo que no pueden tener  
+    representación en cadena.  
+8.- Las ** Lambdas ** son funciones anónimas que suelen ser usadas cuando necesitamos una función una sola vez.  
+    Para definir lambdas se usa "\" seguido de los parámetros separados por espacios, luego se usa "->" seguido  
+    del cuerpo de la función. Las lambdas se encierran en paréntesis.    
+9.- Pliegues son funciones que toman una función binaria f, un valor inicial o acumulador y una lista que plegar.  
+    La función binaria toma dos parámetros, el primero es el acumulador y el segundo el primer elemento de la lista.  
+    La función binaria actualiza el acumulador produciendo un nuevo acumulador, después la función binaria se  
+    vuelve a llamar junto con el nuevo acumulador y el nuevo primer elemento de la lista. Cuando se acaba la lista,  
+    se terminan las llamadas a la función binaria.  
+10.- Existe el pliegue por la izaquierda "foldl" que consume una lista empezando por la izquierda, también  
+     existe el pliegue por la derecha que consuyme la lista por la derecha.  
+11.- Para los pliegues por la derecha, en la función binaria, el primer parámetro es el valor consumido de la lista  
+     y el segundo parámetro es el acumulador.  
+12.- El acumulador puede ser de cualquier tipo, como entero, lista, tupla, etc.  
+13.- scanl y scanr son como foldl y foldr, solo que devuelven todos los acumuladores intermedios en forma de lista.  
+14.- La función "$" se le llama aplicación de una función, toma una función con firma "a -> b" y algo de tipo a y regresa  
+     la aplicación de la función al algo.  
+15.- La aplicación explícita de una función tiene la más alta precedencia mientras que "$" tiene las más baja  
+     precedencia.  
+16.- La aplicación explícita de una función es asociativa a la izquierda mientras que "$" es asociativa a la derecha.  
+17.- "$" puede considerarse como una parémtesis abierto que agrega encierra a toda la expresión a al derecha de él.  
+18.- Composición de funciones con el operador ".". La composición tiene la siguiente firma:  
+     (.) :: (b -> c) -> (a -> b) -> a -> c  
+     f . g = \x -> f (g x)  

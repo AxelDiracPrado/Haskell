@@ -213,3 +213,48 @@
 18.- Composición de funciones con el operador ".". La composición tiene la siguiente firma:  
      (.) :: (b -> c) -> (a -> b) -> a -> c  
      f . g = \x -> f (g x)  
+
+## Módulos en Haskell  
+
+1.- Un módulo en haskell es una colección de funciones, tipos y clases de tipos relacionados  
+    entre sí.  
+2.- El módulo Prelude es el módulo importado por defecto y contien los tipos básicos y clases  
+    de tipos más usados.  
+3.- Es recomendable dividir un programa en haskell en módulos debilmente acoplados para su futura  
+    reutilización.  
+4.- La sintaxis para importar módulos en haskell es: import <nombreDelModulo>.  
+5.- La importación de módulos debe realizarse antes de que se use una función definida en ese    
+    módulo.  
+6.- En ghci usamos ":m + <nombreDelModulo>" para cargar módulos.  
+7.- Cuando se quiere importar solo algunas funciones de un módulo se usa:  
+    "import <nombreDelMódulo> (funcion1, funión2, ...)"  
+8.- Si queremos importar casí todas las funciones de un módulo excepto algunas, usamos:  
+    "import <nombreDelMódulo> hiding (función1, función2,...).  
+9.- Hay situaciones en que ocurre una colisión entre funciones, es decir, una función f del módulo
+    M1 se llaman igual (aunque puede diferir en comportamiento) que la función f del módulo M2, en   
+    este caso usamos:  
+    "import qualified M1 M2" y para llamar a la funciones se usa "M1.f" o ""M2.f".  
+10.- Podemos renombra un módulo como:  
+     " import qualified M as N"  
+11.- Algunos módulos de haskell son:  
+    a) Data.List: Contiene funciones para manejar listas, algunas de ellas ya las carga Prelude.  
+	* intersperse: toma un elemento y una lista, pone ese elemento entre cada par de elementos  
+   	  de la lista.   
+	* intercalate: toma una lista y una listas de listas. Inserta la primera lista entre todas  
+          las demás listas, dando como resultado una única lista.    
+        * transpose: transpone una lista de listas. Si miras la lista de listas como una matriz 2D,  
+          las columnas se convierten en filas y viceversa.
+	* concat aplana una lista de listas en una simple lista con los mismos elementos.  
+	* foldl' y foldl1': son versiones estrictas de sus respectivas versiones perezosas. Cuando  
+          usamos pliegues perezosos sobre listas muy grandes solemos obtener errores de desbordamiento de pila.   
+	* concatMap: es lo mismo que hacer primero un mapeado con una función a una lista y concatenar  
+          todos los resultados.  
+	* and: toma una lista de booleanos y devuelve True solo si todos los elementos de la lista son True.  
+	  or es como and solo que devuelve True solo si existe algún elemento True en la lista.  
+	* any y all: toman un predicado y una lista y comprueban si el predicado se satisface para algún o  
+          para todos los elementos respectivamente.   
+ 	* splitAt: toma un número y una lista. Luego divide la lista por el índice indicado y devuelve  
+          una dupla con ambas listas.  
+	* Muchas más, ver "Aprende haskel por el bien de todos".  
+
+
